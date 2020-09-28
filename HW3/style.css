@@ -1,0 +1,199 @@
+/* -- Complete site -- */
+*
+{
+	margin: 0;
+	padding: 0;
+}
+
+
+/* --- Navigation --- */
+#nav-bar
+{
+	position: sticky;
+	top: 0;
+	z-index: 10;
+}
+
+.navbar-brand img
+{
+	height: 40px;
+	padding-left: 20px;
+}
+
+.navbar-nav li
+{
+	padding: 0 10px;
+}
+
+.navbar-nav li a
+{
+	color: #f9f9f9 !important;
+	font-weight: 600;
+	float: right;
+	text-align: left;
+}
+	/* --- COLOR OF HOVER --- */
+#nav-bar ul li a:hover{
+	color: #7c9ad8!important; /*inQ blue */
+	/*color: #f9f9f9; inQ offwhite*/
+}
+	/* --- COLOR OF BACKGROUND --- */
+.navbar
+{
+	background-image: linear-gradient(to right, #7c9ad8, #4373d0);
+	padding: 0 !important;
+}
+
+.navbar-toggler
+{
+	border: none !important;
+	outline: none !important;
+}
+
+.nav-link
+{
+	color: #555!important; /*charchoal black */
+	/*color: #f9f9f9; inQ offwhite*/
+	font-weight: 600;
+	font-size: 16px;
+}
+
+/* --- Banner Section --- */
+#banner
+{
+	background-image: linear-gradient(to right, #7c9ad0, #4373d0);
+	color: #f9f9f9; /*inQ offwhite*/
+	padding-top: 5%;
+}
+
+.promo-title
+{
+	font-size: 40px;
+	font-weight: 600;
+	margin-top: 100px;
+}
+
+.play-btn
+{
+	width: 45px;
+	margin: 20px;
+}
+
+.random_btn img
+{
+	height: 60px;
+	/*padding-left: 20px;*/
+}
+
+#banner a
+{
+	color: #f9f9f9;
+	text-decoration: none;
+}
+
+.bottom-img
+{
+	width: 100%;
+}
+
+/* --- inqQ rooms sections --- */
+#inQ_rooms
+{
+	padding: 80px 0;
+}
+
+.inQ_rooms
+{
+	padding: 20px;
+}
+
+.inQ_rooms h4
+{
+	padding: 5px;
+	margin-top: 25px;
+	color: #4373d0!important; /*inQ blue */
+}
+
+.rooms-img
+{
+	width: 200px;
+	margin-top: 0px;
+}
+
+.rooms-img:hover
+{
+	transform: translateY(-10px);
+}
+
+
+/* --- Social Media/Footer Section --- */
+#social-media
+{
+	background: #f9f9f9; /*inQ offwhite*/
+	padding: 100px 0;
+}
+
+#social-media p
+{
+	font-size: 36px;
+	font-weight: 600;
+	margin-bottom: 30px;
+}
+
+.social-icons img
+{
+	width: 60px;
+	transition: 0.5s;
+}
+
+.social-icons a:hover img
+{
+	transform: translateY(-10px);
+}
+
+#footer
+{
+	background-image: #f9f9f9;
+	color: #f9f9f9; /*inQ offwhite*/;
+}
+
+.footer-img
+{
+	width: 100%;
+}
+
+/* --- Form Style --- */
+/* Full-width input fields */
+input[type=text], input[type=form] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+/* Set a style for all buttons */
+button {
+  background-color: #4373d0;
+  color: #f9f9f9; /*inQ offwhite*/
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+
+.container {
+  padding: 16px;
+}
+
+span.msg {
+  float: right;
+  padding-top: 16px;
+}

@@ -1,0 +1,59 @@
+@charset "UTF-8";
+/* CSS Document */
+
+/* This is a css stylesheet for my xml doc! */
+
+h1
+{
+	font-size: 36px;
+	font-weight: 600;
+	margin-bottom: 30px;
+	text-align: center;
+	padding-left: 15px;
+}
+
+
+setlist
+{
+	background-color: lightblue;
+}
+
+song
+{
+	display: block;
+	font-size: 23px;
+	font-weight: 300;
+	padding-left: 15px;
+}
+
+h2
+{
+	font-size: 23px;
+	font-weight: 600;
+}
+
+title
+{
+	text-align: left;
+	padding-bottom: 50px;
+}
+
+genre
+{
+	text-align: left;
+	padding-bottom: 50px;
+}
+
+
+year
+{
+	text-align: left;
+	padding-bottom: 50px;
+}
+
+
+artist
+{
+	text-align: left;
+	padding-bottom: 50px;
+}

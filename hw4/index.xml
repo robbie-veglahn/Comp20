@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="style.css"?>
+
+<setlist>
+    <h1>My Band's Setlist</h1>
+  <song>
+	<h2>Song:</h2>
+    <title>Under Cover of Darkness</title>
+	<h2>Artist:</h2>
+    <artist>The Strokes</artist>
+	<h2>Genre:</h2>
+	<genre>Alt Rock</genre>
+	<h2>Year:</h2>
+	<year>2011</year>
+  </song>
+  <song>
+	<h2>Song:</h2>
+    <title>Harvest Moon</title>
+	<h2>Artist:</h2>
+    <artist>Neil Young</artist>
+	<h2>Genre:</h2>
+	<genre>Classic Rock</genre>
+	<h2>Year:</h2>
+	<year>1992</year>
+  </song>
+  <song>
+	<h2>Song:</h2>
+    <title>For Emma</title>
+	<h2>Artist:</h2>
+    <artist>Bon Iver</artist>
+	<h2>Genre:</h2>
+	<genre>Indie/Folk</genre>
+	<h2>Year:</h2>
+	<year>2007</year>
+  </song>
+  <song>
+	<h2>Song:</h2>
+    <title>Something</title>
+	<h2>Artist:</h2>
+    <artist>The Beatles</artist>
+	<h2>Genre:</h2>
+	<genre>Classic Rock</genre>
+	<h2>Year:</h2>
+	<year>1969</year>
+  </song>
+  <song>
+	<h2>Song:</h2>
+    <title>Best Part</title>
+	<h2>Artist:</h2>
+    <artist>Daniel Ceasar ft H.E.R.</artist>
+	<h2>Genre:</h2>
+	<genre>R and B</genre>
+	<h2>Year:</h2>
+	<year>2017</year>
+  </song>
+  <song>
+	<h2>Song:</h2>
+    <title>Time</title>
+	<h2>Artist:</h2>
+    <artist>Pink Floyd</artist>
+	<h2>Genre:</h2>
+	<genre>Classic Rock</genre>
+	<h2>Year:</h2>
+	<year>1973</year>
+  </song>
+  <song>
+	<h2>Song:</h2>
+    <title>Shea Butter Baby</title>
+	<h2>Artist:</h2>
+    <artist>Ari Lennox</artist>
+	<h2>Genre:</h2>
+	<genre>R and B</genre>
+	<h2>Year:</h2>
+	<year>2019</year>
+  </song>
+  <song>
+	<h2>Song:</h2>
+    <title>Beyond</title>
+	<h2>Artist:</h2>
+    <artist>Leon Bridges</artist>
+	<h2>Genre:</h2>
+	<genre>R and B</genre>
+	<h2>Year:</h2>
+	<year>2015</year>
+  </song>
+  <song>
+	<h2>Song:</h2>
+    <title>Don't Think Twice It's All Right</title>
+	<h2>Artist:</h2>
+    <artist>Bob Dylan</artist>
+	<h2>Genre:</h2>
+	<genre>Classic Rock/Folk</genre>
+	<h2>Year:</h2>
+	<year>1962</year>
+  </song>
+  <song>
+	<h2>Song:</h2>
+    <title>Hard Place</title>
+	<h2>Artist:</h2>
+    <artist>H.E.R.</artist>
+	<h2>Genre:</h2>
+	<genre>R and B</genre>
+	<h2>Year:</h2>
+	<year>2019</year>
+  </song>
+</setlist>

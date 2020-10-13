@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>QuickPick Lottery</title>
+<link href="style.css" rel="stylesheet" type="text/css">
+</head>
+	<script>
+function pick_loto() {
+	var user_picks = prompt("Enter your winning numbers separated by a space!");
+	var user_lucky_num = prompt("Enter lucky ball number!");
+	user_picks = user_picks.split(" ")
+	document.getElementById("user_quick_picks").innerHTML = "Your quick pick numbers: " + user_picks.join(" ")
+	document.getElementById("user_lucky").innerHTML = "Your lucky ball is: " + user_lucky_num
+	var random_nums = [];
+    var matches = 0;
+	var size = 5
+    for (var i = 0; i < size; i++) {
+		random_nums.push(Math.floor(Math.random() * (49 - 1 + 1) + 1))
+		if (user_picks.includes(String(random_nums[i]))) {
+			matches++
+		}
+	}
+	var random_lucky = Math.floor(Math.random() * (19 - 1 + 1) + 1)
+	document.getElementById("randLucky").innerHTML = ("The REAL lucky ball number is: " + random_lucky)
+	random_nums = random_nums.sort((a, b) => a - b)
+	document.getElementById("randWinners").innerHTML = ("The REAL winning numbers are: " + random_nums.join(" "));
+	if (matches == 0) {
+		if (random_lucky == user_lucky_num) {
+			document.getElementById("results").innerHTML = "Woohoo, you won! Your payout is $4"
+		} else {
+			document.getElementById("results").innerHTML = "You Lost :("
+		}
+	} else if (matches == 1) {
+		if (random_lucky == user_lucky_num) {
+			document.getElementById("results").innerHTML = "Woohoo, you won! Your payout is $6"
+		} else {
+			document.getElementById("results").innerHTML = "You Lost :("
+		}
+	} else if (matches == 2) {
+		if (random_lucky == user_lucky_num) {
+			document.getElementById("results").innerHTML = "Woohoo, you won! Your payout is $25"
+		} else {
+			document.getElementById("results").innerHTML = "Woohoo, you won! Your payout is $3"
+		}
+	} else if (matches == 3) {
+		if (random_lucky == user_lucky_num) {
+			document.getElementById("results").innerHTML = "Woohoo, you won! Your payout is $150"
+		} else {
+			document.getElementById("results").innerHTML = "Woohoo, you won! Your payout is $20"
+		}
+	} else if (matches == 4) {
+		if (random_lucky == user_lucky_num) {
+			document.getElementById("results").innerHTML = "Woohoo, you won! Your payout is $5000"
+		} else {
+			document.getElementById("results").innerHTML = "Woohoo, you won! Your payout is $200"
+		}
+	} else if (matches == 5) {
+		if (random_lucky == user_lucky_num) {
+			document.getElementById("results").innerHTML = "Woohoo, you won! Your payout is $7,000 a week for the rest of your life!!!"
+		} else {
+			document.getElementById("results").innerHTML = "Woohoo, you won! Your payout is $25,000 a year for the rest of your life!!!"
+		}
+	}
+}
+
+
+	</script>
+<body onload="pick_loto()">
+	<h1> Welcome to the Lotto!</h1>
+	<h2> Here's how it went:</h2>
+	<p id="user_quick_picks"></p>
+	<p id="user_lucky"></p>
+	<p id="randWinners"></p>
+	<p id="randLucky"></p>
+	<p id="results"></p>
+</body>
+</html>

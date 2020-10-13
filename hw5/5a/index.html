@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Joe's Hotdog Stand</title>
+</head>
+	<script> 
+function run_stand() {
+	hotdog_count = window.prompt("How many hotdogs would you like??")
+	fry_count = window.prompt("How many orders of fries would you like?")
+	soda_count = window.prompt("How many sodas would you like?")
+	h_cost = (3.25 * hotdog_count)
+	f_cost = (2.00 * fry_count)
+	s_cost = (1.50 * soda_count)
+	subtotal = h_cost + f_cost + s_cost
+	if (subtotal >= 20.00) {
+		document.getElementById("discount?").innerHTML = "You qualified for our 10% discount!"
+		subtotal -= (subtotal * .1)
+	} else {
+		document.getElementById("discount?").innerHTML = "Sorry, you didn't quite qualify for our 10% discount :("
+	}
+	tax = (subtotal * .0625)
+	total_cost = subtotal + tax
+	document.getElementById("hotdogs").innerHTML = "* Hotdogs: " + hotdog_count + " at $3.25 is $" + h_cost.toFixed(2)
+	document.getElementById("sodas").innerHTML = "* Sodas: " + soda_count + " at $1.50 is $" + s_cost.toFixed(2)
+	document.getElementById("fries").innerHTML = "* Fries: " + fry_count + " at $2.00 is $" + f_cost.toFixed(2)
+	document.getElementById("subtotal").innerHTML = "* Subtotal: " + subtotal.toFixed(2)
+	document.getElementById("tax").innerHTML = "* Tax: " + tax.toFixed(2)
+	document.getElementById("total").innerHTML = "* Total: " + total_cost.toFixed(2)
+}
+	</script>
+
+<body onload="run_stand()">
+	
+	<h1> Welcome to Joe's Hotdogs!</h1>
+	<h2> Your Order</h2>
+	<p id="hotdogs"></p>
+	<p id="fries"></p>
+	<p id="sodas"></p>
+	<p id="discount?"></p>
+	<p id="subtotal"></p>
+	<p id="tax"></p>
+	<p id="total"></p>
+</body>
+</html>

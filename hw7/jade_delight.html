@@ -1,0 +1,226 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<title>Jade Delight</title>
+</head>
+
+<body>
+<script language="javascript">
+
+function MenuItem(name, cost)
+{
+	this.name = name;
+	this.cost = cost;
+}
+
+/* CalculateTime takes an orderType string indicating either pikcup or...
+delivery, and adds either 15 or 30 minutes to the current time dependign on...
+input.
+*/
+function CalculateTime(orderType) {
+    var today = new Date();
+    var currHour = today.getHours();
+    var currMin  = today.getMinutes();
+    if (orderType == "pickup") {
+        currMin += 15;
+        if (currMin >= 60) {
+            currMin -= 60;
+            currHour += 1;
+        }
+    } else if (orderType == "delivery") {
+        currMin += 15;
+        if (currMin >= 60) {
+            currMin -= 60;
+            currHour += 1;
+        }
+    }
+    var currTime = currHour + ":" + currMin;
+    return currTime 
+}
+
+/* The document ready function waits to make sure the page is loaded, then...
+updates the table with all relevant info based on user input.
+*/
+$(document).ready(function() {
+    $("table").on('change','select',
+    function(){
+        var currRow = $(this).closest("tr");
+        // Getting quantity from first data cell
+        var num_items = currRow.find("td:eq(0) option:selected").text();
+        // Getting price from third data cell
+        var price = currRow.find("td:eq(2)").text();
+        // Ignoring $ and space
+        price = price.substring(2);
+        var itemCost = calculateCost(parseFloat(num_items), parseFloat(price))
+        currRow.find("td:eq(3) input").val(parseFloat(itemCost));
+        var subTotal = updateSub(parseFloat(itemCost));
+        var tax = updateTax(parseFloat(subTotal));
+        updateTotalCost(parseFloat(subTotal), parseFloat(tax));
+    });
+})
+
+/* This document ready function waits to make sure the page is loaded, then...
+hides the street and phoen number until "Delivery" optoin is toggled on.
+*/
+$(document).ready(function(){
+    $('form').find('input[name="street"]').parent().hide();
+    $('form').find('input[name="city"]').parent().hide();
+    $('input:radio[name="p_or_d"]').change(
+    function(){
+        $('form').find('input[name="street"]').parent().toggle();
+        $('form').find('input[name="city"]').parent().toggle();
+    });
+});
+
+// Updates the subtotal and writes to the correct data cell
+function updateSub(itemCost) {
+    if (!$('#subtotal').val()) {
+        $('#subtotal').val(parseFloat(itemCost));
+    } else {
+        var currSubtotal = parseFloat($('#subtotal').val());
+        currSubtotal += parseFloat(itemCost);
+        $('#subtotal').val(currSubtotal);
+    }
+    return currSubtotal;
+}
+
+// Updates the total cost and writes to the correct data cell
+function updateTotalCost(subTotal, tax) {
+    var totalCost = (parseFloat(subTotal) + parseFloat(tax));
+    $('#total').val(parseFloat(totalCost.toFixed(2)));
+}
+
+// Updates the tax and writes to the correct data cell
+function updateTax(subTotal) {
+    var taxRate = .0625;
+    var tax = taxRate * subTotal
+    tax = tax.toFixed(2);
+    $('#tax').val(parseFloat(tax));
+    return tax;
+}
+
+    // Validator Function
+    $(document).ready(function(){
+        $("form").submit(function(e){
+            var errors = "";
+            var p_or_d = $("input[name='p_or_d']:checked").val();
+            var phoneNum = $('form').find('input[name="phone"]').val();
+            var lastname = $('form').find('input[name="lname"]').val();
+            /* Validates phone nunber */
+            var phoneno = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+            if(!phoneNum.match(phoneno)) {
+                e.preventDefault();
+                errors = errors + "Must enter a valid phone number!\n";
+            }
+            /* Validates last name */
+            if (lastname == "") {
+                e.preventDefault();
+                errors = errors + "Must enter a valid last name!\n";
+            }
+            /* If delivery, check street and city */
+            if (p_or_d == "delivery") {
+                var st = $('form').find('input[name="street"]').val();
+                var city = $('form').find('input[name="city"]').val();
+                if (st == "") {
+                    e.preventDefault();
+                    errors = errors + "Must enter a valid street!\n";
+                }
+
+                if (city == "") {
+                    e.preventDefault();
+                    errors = errors + "Must enter a valid city!\n";
+                }
+            }
+            if (errors != "") {
+                alert("ERROR:\n" + errors);
+            } else {
+                var p_or_dTime = CalculateTime(p_or_d);
+                var alertMessage = "Thanks for choosing Jade Delight!\n";
+                alertMessage += "Your Pickup Time: " + p_or_dTime + "\n\n";
+                alertMessage += "Your Order:\n"
+                $("table tr").each(function(){
+                    var num_items = $(this).find("td:first option:selected").text(); 
+                    if (num_items > 0) {
+                        alertMessage += alertMessage + $(this).find("td:nth-child(2)").text() + " x " + num_items + "\n";
+                    }
+                });
+                alertMessage += "\n" + "Total Cost: " + $('#total').val();
+                alert(alertMessage);
+            }
+        });
+    });
+
+function calculateCost(num_items, price) {
+    var totalCost = num_items * price
+    return totalCost.toFixed(2);
+}
+
+menuItems = new Array(
+	new MenuItem("Chicken Chop Suey", 4.5),
+	new MenuItem("Sweet and Sour Pork", 6.25),
+	new MenuItem("Shrimp Lo Mein", 5.25),
+	new MenuItem("Moo Shi Chicken", 6.5),
+	new MenuItem("Fried Rice", 2.35)
+);
+
+function makeSelect(name, minRange, maxRange)
+{
+	var t= "";
+	t = "<select name='" + name + "' size='1'>";
+	for (j=minRange; j<=maxRange; j++)
+	   t += "<option>" + j + "</option>";
+	t+= "</select>"; 
+	return t;
+}
+</script>
+
+<h1>Jade Delight</h1>
+<form>
+
+<p>First Name: <input type="text"  name='fname' /></p>
+<p>Last Name*:  <input type="text"  name='lname' /></p>
+<p>Street: <input type="text"  name='street' /></p>
+<p>City: <input type="text"  name='city' /></p>
+<p>Phone*: <input type="text"  name='phone' /></p>
+<p> 
+	<input type="radio"  name="p_or_d" value = "pickup" checked="checked"/>Pickup  
+	<input type="radio"  name='p_or_d' value = 'delivery'/>
+	Delivery
+</p>
+<table border="0" cellpadding="3">
+  <tr>
+    <th>Select Item</th>
+    <th>Item Name</th>
+    <th>Cost Each</th>
+    <th>Total Cost</th>
+  </tr>
+<script language="javascript">
+
+  var s = "";
+  for (i=0; i< menuItems.length; i++)
+  {
+	  s += "<tr><td>";
+	  s += makeSelect("quan" + i, 0, 10);
+	  s += "</td><td>" + menuItems[i].name + "</td>";
+	  s += "<td> $ " + menuItems[i].cost.toFixed(2) + "</td>";
+	  s += "<td>$<input type='text' name='cost'/></td></tr>";
+  }
+  document.writeln(s);
+</script>
+</table>
+<p>Subtotal: 
+   $<input type="text"  name='subtotal' id="subtotal" />
+</p>
+<p>Mass tax 6.25%:
+  $ <input type="text"  name='tax' id="tax" />
+</p>
+<p>Total: $ <input type="text"  name='total' id="total" />
+</p>
+
+<input type = "submit" value = "Submit Order" />
+
+</form>
+</body>
+</html>

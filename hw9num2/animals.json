@@ -1,17 +1,9 @@
 [
 	{
-	"name": "TESTING, TESTING!",
-	"type": "cat",
-	"breed": "Maine Coon",
-	"age": 4,
-	"gender": "female",
-	"procedures": ["checkup","rabies","spayed"],
-	"adopting_family": {
-		"name": "smith",
-		"town": "Cambridge",
-		"children" : 1,
-		"other_pets": false
-	}
+        "Song": "Under Cover of Darkness",
+    	"Artist": "The Strokes",
+    	"Genre": "Alt Rock",
+    	"Year": 2011
 },
 {
 	"name": "Fido2",

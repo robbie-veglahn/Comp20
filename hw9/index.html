@@ -10,16 +10,16 @@
 
 <body>
 	<script language="javascript">
-	$.get( "http://www.secretcheese.com/comp20/demo/animals.json", 
+	$.get( "https://robbie-veglahn.github.io/Comp20/hw9/setlist.json", 
 		  function( data ) {
 			str = JSON.stringify(data);
 			document.write(str);
 			strHTML= "";
-		data.forEach(function(animal) { 
-		strHTML += "<li>" 
-			    + animal.name + " : " 
-				+ animal.type + "</li>";
-			}) 
+		// data.forEach(function(animal) { 
+		// strHTML += "<li>" 
+		// 	    + animal.name + " : " 
+		// 		+ animal.type + "</li>";
+		// 	}) 
 	strHTML += "</ul>";
 	document.write (strHTML); 
 	})

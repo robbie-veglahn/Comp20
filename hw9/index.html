@@ -6,23 +6,74 @@
 	<script   src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
 	<script type="text/javascript" src="setlist.json"></script>
 
+<script language="javascript">
+    function loadPage(){
+    	$.get( "https://robbie-veglahn.github.io/Comp20/hw9/setlist.json", 
+    		  function( data ) {
+    			str = JSON.stringify(data);
+                document.getElementById("display").innerHTML = str;
+                var genre = document.getElementById("genre").value;
+    			strHTML= "";
+                var setlist = JSON.parse(str);
+                var genres = [];
+                for (var i in setlist) {
+                    if (!(genres.includes(setlist[i].Genre))) {
+                        genres.push(setlist[i].Genre);
+                    }
+                }
+                for (var x in genres) {
+                    console.log(genres[x]);
+                    var dropdown = document.getElementById("genre");
+                    var option = document.createElement("option");
+                    option.text = genres[x];
+                    dropdown.add(option);
+                }
+                data.forEach(function(Song) {
+                	strHTML += "<li>" 
+                			    + Song.Song + "<br>Artist: "
+                                + Song.Artist + "<br>Genre: "
+                                + Song.Genre + "<br>Year Released: "
+                				+ Song.Year + "</li>";
+                    })
+            	strHTML += "</ul>";
+            	document.getElementById("display").innerHTML += strHTML;
+            })
+    }
+    function showSetlist(){
+    	$.get( "https://robbie-veglahn.github.io/Comp20/hw9/setlist.json", 
+    		  function( data ) {
+    			str = JSON.stringify(data);
+                var genre = document.getElementById("genre").value;
+    			// document.write(str);
+    			strHTML= "";
+                var setlist = JSON.parse(str);
+        		data.forEach(function(Song) {
+                    if (Song.Genre == genre) {
+                		strHTML += "<li>" 
+                			    + Song.Song + "<br>Artist: "
+                                + Song.Artist + "<br>Genre: "
+                                + Song.Genre + "<br>Year Released: "
+                				+ Song.Year + "</li>";
+        			    }
+                    })
+            	strHTML += "</ul>";
+            	document.getElementById("display").innerHTML = strHTML;
+            	})
+    }
+</script>
+
+
 </head>
 
-<body>
-	<script language="javascript">
-	$.get( "https://robbie-veglahn.github.io/Comp20/hw9/setlist.json", 
-		  function( data ) {
-			str = JSON.stringify(data);
-			document.write(str);
-			strHTML= "";
-		// data.forEach(function(animal) { 
-		// strHTML += "<li>" 
-		// 	    + animal.name + " : " 
-		// 		+ animal.type + "</li>";
-		// 	}) 
-	strHTML += "</ul>";
-	document.write (strHTML); 
-	})
-</script>
+<body onload = "loadPage()">
+<div>
+    <form>
+        <select id="genre">
+            <option>Select a Genre</option>
+        </select><br>
+        <input type="button" value="Filter" onclick="showSetlist()">
+    </form>
+</div>
+<div id = "display"></div>
 </body>
 </html>

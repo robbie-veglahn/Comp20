@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head>
+    <title>LinkPreview API</title>
+    <meta charset="utf-8"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script>
+        $.ajax({
+            url: "https://api.linkpreview.net?key=673854b9031565feb73f72a82441ba6c&q=http://comp20.secretcheese.com/",
+            success: function(result){
+                console.log(result);
+                console.log(result.url + result.title + result.description);
+                $("#div1").html("Retrieved link: " + result.url);
+                $("#div2").html("Retrieved description: " + result.description);
+                $("#div3").html("Retrieved title: " + result.title);
+                $("#div4").html("Retrieved image link: " + result.image);
+            }
+        });
+    </script>
+</head>
+
+
+<body>
+    <h1>Retrieved Link from LinkPreview: </h1>
+    <div id="div1">Loading...</div>
+    <div id="div2"></div>
+    <div id="div3"></div>
+    <div id="div4" class="preview-image" style="background-image:url();"></div>
+</body>
+</html>
